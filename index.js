@@ -46,7 +46,7 @@ const updateLed = (state) => new Promise((resolve, reject) => {
     const message = eventData.event.text.split(' ').slice(1).join(' ');
     updateLed(message)
       .then(() => {
-        messageMe(eventData, `State updated to "${eventData.event.text}"`);
+        messageMe(eventData, `State updated to "${message}"`);
       })
       .catch((e) => {
         messageMe(eventData, e);
