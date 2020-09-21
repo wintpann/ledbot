@@ -42,8 +42,9 @@ const updateLed = (state) => new Promise((resolve, reject) => {
   await bot.start(process.env.PORT || 3000);
   console.log('Bot is running');
 
-  bot.event('message', (eventData) => {
-    updateLed(eventData.event.text)
+  bot.event('app_mention', (eventData) => {
+    const message = eventData.event.text.split(' ').slice(1).join(' ');
+    updateLed(message)
       .then(() => {
         messageMe(eventData, `State updated to "${eventData.event.text}"`);
       })
